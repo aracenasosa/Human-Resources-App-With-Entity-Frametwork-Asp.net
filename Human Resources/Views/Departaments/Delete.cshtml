@@ -1,0 +1,67 @@
+﻿@model Human_Resources.Departament
+@{
+    ViewBag.Title = "Delete";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+</head>
+<body style="background: #d53369;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #cbad6d, #d53369);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #cbad6d, #d53369); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container" style="margin-left:200px;">
+            <h2 class="display-4 text-warning">Delete</h2>
+            <h2>Are you sure you want to delete this?</h2>
+            <div class="row">
+                <div class="col-6">
+                    <hr />
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="display-4"><span class="badge badge-danger">Delete Departament</span></h1>
+                        </div>
+                        <div class="card-body">
+                            <form>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b>@Html.DisplayNameFor(model => model.Codigo): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Codigo)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b> @Html.DisplayNameFor(model => model.Departamento): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Departamento)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b>@Html.DisplayNameFor(model => model.Encargado): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Encargado)</span>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger btn-lg p-3 mt-3" />
+                    <a class="btn btn-warning btn-lg p-3 mt-3" href="/Departaments/Index">Back To List</a>
+                </div>
+            }
+        </div>
+    }
+</body>
+</html>

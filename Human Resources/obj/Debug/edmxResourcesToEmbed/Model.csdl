@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Departament">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Encargado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.fk_Departament" FromRole="Departament" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Admission" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Salary" Type="Decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="Departament" Type="Int32" Nullable="false" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Departament1" Relationship="Self.fk_Departament" FromRole="Employee" ToRole="Departament" />
+    <NavigationProperty Name="Position1" Relationship="Self.fk_Position" FromRole="Employee" ToRole="Position" />
+    <NavigationProperty Name="Departure" Relationship="Model.fk_Departure" FromRole="Employee" ToRole="Departure" />
+    <NavigationProperty Name="Holidays" Relationship="Model.fk_Holidays" FromRole="Employee" ToRole="Holidays" />
+    <NavigationProperty Name="License" Relationship="Model.fk_Licence" FromRole="Employee" ToRole="License" />
+    <NavigationProperty Name="Permission" Relationship="Model.fk_permission" FromRole="Employee" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.fk_Position" FromRole="Position" ToRole="Employee" />
+  </EntityType>
+  <Association Name="fk_Departament">
+    <End Role="Departament" Type="Self.Departament" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departament">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Departament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Human_ResourcesEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departament" EntityType="Self.Departament" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <AssociationSet Name="fk_Departament" Association="Self.fk_Departament">
+      <End Role="Departament" EntitySet="Departament" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Position" Association="Self.fk_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <EntitySet Name="Nomina" EntityType="Model.Nomina" />
+    <FunctionImport Name="CalculoNomina" ReturnType="Collection(Model.Calculo)" />
+    <EntitySet Name="Departure" EntityType="Model.Departure" />
+    <EntitySet Name="Holidays" EntityType="Model.Holidays" />
+    <AssociationSet Name="fk_Departure" Association="Model.fk_Departure">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Departure" EntitySet="Departure" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Holidays" Association="Model.fk_Holidays">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Holidays" EntitySet="Holidays" />
+    </AssociationSet>
+    <EntitySet Name="License" EntityType="Model.License" />
+    <EntitySet Name="Permission" EntityType="Model.Permission" />
+    <AssociationSet Name="fk_Licence" Association="Model.fk_Licence">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="License" EntitySet="License" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permission" Association="Model.fk_permission">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Permission" EntitySet="Permission" />
+    </AssociationSet>
+    <FunctionImport Name="EmpleadosActivos" ReturnType="Collection(Model.EmpleadosActivos)" />
+    <FunctionImport Name="EmpleadosInactivos" ReturnType="Collection(Model.EmpleadosInactivos)" />
+    <FunctionImport Name="DepartamentCreated" ReturnType="Collection(Model.DepartamentCreated)" />
+    <FunctionImport Name="PositiontCreated" ReturnType="Collection(Model.PositiontCreated)" />
+  </EntityContainer>
+  <EntityType Name="Nomina">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Año" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+    <Property Name="Mes" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MontoTotal" Type="Decimal" Precision="13" Scale="2" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="Calculo">
+    <Property Type="Decimal" Name="Monto_Total" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <EntityType Name="Departure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="Motivo" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee1" Relationship="Model.fk_Departure" FromRole="Departure" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Holidays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Correspondiente" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Comentarios" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee1" Relationship="Model.fk_Holidays" FromRole="Holidays" ToRole="Employee" />
+  </EntityType>
+  <Association Name="fk_Departure">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model.Departure" Role="Departure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Departure">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Holidays">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model.Holidays" Role="Holidays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Holidays">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="License">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Motivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Comentarios" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee1" Relationship="Model.fk_Licence" FromRole="License" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comentarios" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee1" Relationship="Model.fk_permission" FromRole="Permission" ToRole="Employee" />
+  </EntityType>
+  <Association Name="fk_Licence">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model.License" Role="License" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="License">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permission">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="EmpleadosActivos_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Code" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Telephone" Nullable="false" MaxLength="15" />
+    <Property Type="DateTime" Name="Admission" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Salary" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+    <Property Type="Int32" Name="Departament" Nullable="false" />
+    <Property Type="Int32" Name="Position" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EmpleadosActivos">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Code" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Telephone" Nullable="false" MaxLength="15" />
+    <Property Type="DateTime" Name="Admission" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Salary" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+    <Property Type="Int32" Name="Departament" Nullable="false" />
+    <Property Type="Int32" Name="Position" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EmpleadosInactivos_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Code" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Telephone" Nullable="false" MaxLength="15" />
+    <Property Type="DateTime" Name="Admission" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Salary" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+    <Property Type="Int32" Name="Departament" Nullable="false" />
+    <Property Type="Int32" Name="Position" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EmpleadosInactivos">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Code" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Telephone" Nullable="false" MaxLength="15" />
+    <Property Type="DateTime" Name="Admission" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Salary" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+    <Property Type="Int32" Name="Departament" Nullable="false" />
+    <Property Type="Int32" Name="Position" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="DepartamentCreated_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="String" Name="Departamento" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Encargado" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="DepartamentCreated">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="String" Name="Departamento" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Encargado" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="PositiontCreated_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PositiontCreated">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
