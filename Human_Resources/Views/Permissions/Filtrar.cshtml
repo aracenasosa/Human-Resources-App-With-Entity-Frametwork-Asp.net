@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Human_Resources.Permission>
+
+@{
+    ViewBag.Title = "Filtrar";
+}
+
+<h2>Filtrar</h2>
+@using (Html.BeginForm("Filtrar", "Permissions", FormMethod.Get))
+{
+    <p>
+        Busqueda por Comentario: @Html.TextBox("Comentarios")<br />
+
+        <input type="submit" value="Filtrar" class="btn btn-success btn-lg " />
+    </p>
+
+}
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Desde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee1.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desde)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hasta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee1.Name)
+            </td>
+        </tr>
+    }
+
+</table>

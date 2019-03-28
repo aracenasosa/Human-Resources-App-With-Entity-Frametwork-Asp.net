@@ -1,0 +1,64 @@
+﻿@model Human_Resources.Departure
+@{
+    ViewBag.Title = "Details";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+</head>
+<body style="bbackground: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container" style="margin-left:200px;">
+            <h2 class="display-4 text-warning">Details</h2>
+            <div class="row">
+                <div class="col-6">
+                    <hr />
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="display-4"><span class="badge badge-danger">Details License</span></h1>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="card-body">
+                            <form>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b>@Html.DisplayNameFor(model => model.Tipo): </b> </span> <span class="display-4">@Html.DisplayNameFor(model => model.Tipo)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b> @Html.DisplayNameFor(model => model.Motivo): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Motivo)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b>@Html.DisplayNameFor(model => model.Fecha): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Fecha)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="display-4"><b>@Html.DisplayNameFor(model => model.Employee1.Name): </b> </span> <span class="display-4">@Html.DisplayFor(model => model.Employee1.Name)</span>
+                                </div>                                                          
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info btn-lg" })
+            <a class="btn btn-warning btn-lg p-3 mt-3" href="/Departures/Index">Back To List</a>
+        </div>
+    }
+</body>
+</html>
