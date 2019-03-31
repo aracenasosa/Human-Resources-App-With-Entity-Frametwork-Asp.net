@@ -39,7 +39,7 @@ namespace Human_Resources.Controllers
         // GET: Departures/Create
         public ActionResult Create()
         {
-            ViewBag.Employee = new SelectList(db.Employee, "Id", "Name");
+			ViewBag.Employee = new SelectList(db.Employee, "Id", "Name");
             return View();
         }
 

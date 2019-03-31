@@ -32,6 +32,16 @@ namespace Human_Resources.Controllers
 			return View(filt);
 		}
 
+		public ActionResult About()
+		{
+			return View();
+		}
+
+		public ActionResult Info()
+		{
+			return View();
+		}
+
 		// GET: Employees/Details/5
 		public ActionResult Details(int? id)
         {

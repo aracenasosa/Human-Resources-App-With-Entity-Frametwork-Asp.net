@@ -1,86 +1,80 @@
-﻿@model IEnumerable<Human_Resources.EmpleadosInactivos>
+﻿@model IEnumerable<Human_Resources.EmpleadosActivos> 
+
 
 
 @{
     ViewBag.Title = "Filtrar2";
 }
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+    <div class="container mt-5">
+        <h2 class="display-4">Active Employees</h2>
+        <p>
+            @using (Html.BeginForm("Filtrar2", "ModuleReport", FormMethod.Get))
+            {
+            <p>
+                Busqueda por Nombre: @Html.TextBox("Name")<br />
+                Busqueda por Departamento: @Html.TextBox("Departament")<br />
+
+                <input type="submit" value="Filtrar" class="btn btn-success btn-lg " />
+            </p>
+
+        }
+
+            </p>
+
+            @foreach (var item in Model)
+            {
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-header bg-primary">
+                                <h2 class="display-4"><span class="badge badge-danger">Fullname</span> <span>@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Lastname)</span></h2>
+                            </div>
+
+                            <div class="card-body">
+
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Code):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Code)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Telephone):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Telephone)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Admission):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Admission)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Salary):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Salary)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Status):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Status)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Departament):</strong> <span class="h2"> @Html.DisplayFor(modelItem => item.Departament)</span><br /><br />
+                                <strong class="h2">@Html.DisplayNameFor(model => model.Position):</strong> <span class="h2">@Html.DisplayFor(modelItem => item.Position)</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+        </div>
 
 
 
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
 
 
-
-<h2>Filtrar2</h2>
-@using (Html.BeginForm("Filtrar2", "ModuleReport", FormMethod.Get))
-{
-    <p>
-        Busqueda por Mes: @Html.TextBox("Mes")<br />
-        <input type="submit" value="Filtrar" class="btn btn-success btn-lg " />
-    </p>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lastname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telephone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Admission)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Departament)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lastname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telephone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Admission)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Departament)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position)
-            </td>
-        </tr>
-    }
-
-</table>

@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Info";
+}
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Info</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+</head>
+<body style="background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+    <div class="jumbotron" style="margin-top:100px;">
+        <h1 class="display-4">Final Project of Programing III <i class="fas fa-info-circle"></i></h1>
+        <p class="lead">Homework (Human Resources).</p>
+        <hr class="my-4">
+        <p>
+            MÓDULO DE MANTENIMIENTOS<br/>
+            Este módulo consiste en crear formularios que alimentes sendas tablas.<br />
+            Empleados.<br />
+            (Id, Código Empleado, Nombre, Apellido, Teléfono, Departamento, Cargo, Fecha ingreso,
+            Salario, Estatus (Activo/Inactivo))<br />
+            Departamentos<br />
+            (Id, Código Departamento, Nombre)<br />
+            Cargos<br />
+            (Id, Cargo)
+
+        </p>
+
+        <p>
+            MÓDULO DE PROCESOS<br />
+            En este módulo se van a configurar algunos procesos o acciones. Vale decir que estos procesos
+            o acciones son registrados en respectivas tablas<br />
+            Cálculo de nómina<br />
+            Calcular el monto total de la nómina, sumando el salario de los empleados activos y
+            presentando el total, para que sea visto y validado por la persona encargada.
+            Almacenar en una tabla nominas la siguiente información:
+            (Id, Año, Mes, Monto Total)<br />
+            Salida de empleados<br />
+            Inactivar a un determinado empleado, y almacenar la información en una tabla salidas
+            (Empleado, Tipo salida (Renuncia, Despido, Desahucio), Motivo, Fecha Salida)<br />
+            Vacaciones:<br />
+            Registrar las vacaciones que tome un empleado.
+            (Empleado, Desde, Hasta, Correspondiente a: (año), Comentarios)<br />
+            Permisos<br />
+            Registrar los permisos que tome un empleado.
+            (Empleado, Desde, Hasta, Comentarios)<br />
+            Licencias<br />
+            Registrar las licencias que tome un empleado.
+            (Empleado, Desde, Hasta, Motivo, Comentarios)
+        </p>
+        <p>
+        MÓDULO DE INFORMES<br />
+        En este módulo se elegirá el tipo de informe a generar para presentar listas de datos en vistas
+        Nóminas:<br />
+        Con este informe se busca visualizar todas las nóminas de un año especificado, o bien
+        visualizar la correspondiente a un mes en específico<br />
+        Empleados Activos<br />
+        Aquí buscamos visualizar a los empleados activos de la empresa, con opción de verlos todos, o
+        de filtrar por nombre o por departamento. (Incluir ambos filtros)<br />
+        Empleados inactivos<br />
+        Visualizar todos los empleados que han salido de la empresa<br />
+        Departamentos<br />
+        Listar los departamentos creados<br />
+        Cargos<br />
+        Listar los cargos creados<br />
+        Entradas de empleados por mes<br />
+        Visualizar las entradas (empleados creados, ingresados) en un mes determinado por el usuario<br />
+        Salida de empleados por mes<br />
+        Visualizar las entradas (empleados creados, ingresados) en un mes determinado por el usuario<br />
+        Permisos<br />
+        Visualizar los permisos tomados por determinado empleado (a elegir por parte del usuario)
+        </p>
+        <p>
+            Notas:<br />
+            • Se evaluará la funcionalidad de los módulos y opciones.<br />
+            • Debe subir su código a GitHub, para que se reflejen los sucesivos cambios realizados.<br />
+            • Tienen libertad de incluir tecnologías front-end para ayudar al diseño y lograr una<br />
+            experiencia de usuario agradable.<br />
+        </p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+

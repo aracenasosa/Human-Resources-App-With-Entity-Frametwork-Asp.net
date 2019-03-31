@@ -23,7 +23,7 @@ background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, F
       {
           @Html.AntiForgeryToken()
 
-      <div class="container" style="margin-left:200px;">
+      <div class="container mt-5" style="margin-left:200px;">
           <h2 class="display-4 text-warning">Create</h2>
           <div class="row">
               <div class="col-7">
@@ -38,14 +38,24 @@ background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, F
 
                               <div class="form-group">
                                   @Html.LabelFor(model => model.Año, "Year", htmlAttributes: new { @class = "control-label col-md-2 mt-2", @style = "font-size:12px" })
-                                  @Html.EditorFor(model => model.Año, new { htmlAttributes = new { @class = "form-control col-10 p-4", @placeholder = "Enter Year", @style = "font-size:14px" } })
+                                  @Html.DropDownList("Año", new List<SelectListItem>{new SelectListItem{Text="2009", Value = "2009"},
+                                      new SelectListItem{Text="2010", Value = "2010"},  new SelectListItem{Text="2011", Value = "2011"},  new SelectListItem{Text="2012", Value = "2012"}
+                                      ,  new SelectListItem{Text="2013", Value = "2013"},  new SelectListItem{Text="2014", Value = "2014"},  new SelectListItem{Text="2015", Value = "2015"},
+                                      new SelectListItem{Text="2016", Value = "2016"}, new SelectListItem{Text="2017", Value = "2017"}, new SelectListItem{Text="2018", Value = "2018"},
+                                      new SelectListItem{Text="2019", Value = "2019"}},
+                                       "Select Year", new { @class = "form-control col-10", @style = "font-size:14px" })
                                   @Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })
 
                               </div>
 
                               <div class="form-group">
                                   @Html.LabelFor(model => model.Mes, "Month", htmlAttributes: new { @class = "control-label col-md-2 mt-2", @style = "font-size:12px" })
-                                  @Html.EditorFor(model => model.Mes, new { htmlAttributes = new { @class = "form-control col-10 p-4", @placeholder = "Enter Month", @style = "font-size:14px" } })
+                                  @Html.DropDownList("Mes", new List<SelectListItem>{new SelectListItem{Text="January", Value = "January"},
+                                    new SelectListItem{Text="February", Value = "February"},  new SelectListItem{Text="March", Value = "March"},  new SelectListItem{Text="April", Value = "April"}
+                                    ,  new SelectListItem{Text="May", Value = "May"},  new SelectListItem{Text="June", Value = "June"},  new SelectListItem{Text="August", Value = "August"},
+                                    new SelectListItem{Text="September", Value = "September"}, new SelectListItem{Text="October", Value = "October"}, new SelectListItem{Text="November", Value = "November"},
+                                    new SelectListItem{Text="December", Value = "December"}},
+                                    "Select Month", new { @class = "form-control col-10", @style = "font-size:14px" })
                                   @Html.ValidationMessageFor(model => model.Mes, "", new { @class = "text-danger" })
 
                               </div>

@@ -164,7 +164,7 @@ exec CalculoNomina
 Create proc EmpleadosActivos/*Proc Empleados Activos*/
 as
 begin
-Select * from Employee Where Status = 'Active'
+Select * from Employee
 end
 
 Create proc EmpleadosInactivos/*Proc Empleados Inactivos*/
