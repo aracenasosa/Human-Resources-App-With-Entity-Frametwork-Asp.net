@@ -59,7 +59,7 @@ background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, F
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Fecha, "Date", htmlAttributes: new { @class = "control-label col-md-2 mt-2", @style = "font-size:12px" })
-                                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control col-10 p-4", @placeholder = "Enter Date", @style = "font-size:14px" } })
+                                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control col-10 p-4", @placeholder = "Enter Date", @style = "font-size:14px", @type = "date" } })
                                     @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
                                 </div>
 

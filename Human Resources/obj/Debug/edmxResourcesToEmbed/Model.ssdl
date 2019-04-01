@@ -42,7 +42,7 @@
     <Property Name="Employee" Type="int" Nullable="false" />
     <Property Name="Desde" Type="datetime" Nullable="false" />
     <Property Name="Hasta" Type="datetime" Nullable="false" />
-    <Property Name="Correspondiente" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Correspondiente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Comentarios" Type="varchar" MaxLength="400" />
   </EntityType>
   <EntityType Name="License">

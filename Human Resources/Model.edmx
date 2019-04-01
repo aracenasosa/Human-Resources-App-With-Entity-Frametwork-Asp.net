@@ -47,7 +47,7 @@
           <Property Name="Employee" Type="int" Nullable="false" />
           <Property Name="Desde" Type="datetime" Nullable="false" />
           <Property Name="Hasta" Type="datetime" Nullable="false" />
-          <Property Name="Correspondiente" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Correspondiente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comentarios" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="License">
@@ -337,7 +337,7 @@
           <Property Name="Employee" Type="Int32" Nullable="false" />
           <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Correspondiente" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Correspondiente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Comentarios" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employee1" Relationship="Model.fk_Holidays" FromRole="Holidays" ToRole="Employee" />
         </EntityType>

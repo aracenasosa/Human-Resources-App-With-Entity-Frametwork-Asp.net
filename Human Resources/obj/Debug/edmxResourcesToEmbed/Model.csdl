@@ -134,7 +134,7 @@
     <Property Name="Employee" Type="Int32" Nullable="false" />
     <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Correspondiente" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Correspondiente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Comentarios" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Employee1" Relationship="Model.fk_Holidays" FromRole="Holidays" ToRole="Employee" />
   </EntityType>
