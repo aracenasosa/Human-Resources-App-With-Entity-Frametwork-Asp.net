@@ -51,8 +51,8 @@ InCharge Varchar(100) not null
 Create table Position(
 
 Id Int not null Constraint pk_position primary key Identity(1,1),
-Code Int not null unique,
-Position Varchar(50) unique
+Codigo Int not null unique,
+Cargo Varchar(50) unique
 );
 
 Create table Employee(
