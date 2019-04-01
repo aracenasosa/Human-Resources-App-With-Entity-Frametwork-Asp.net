@@ -43,9 +43,9 @@ Permisos*/
 Create table Departament(
 
 Id Int not null Constraint pk_departament primary key Identity(1,1),
-Code Int not null unique,
+Codigo Int not null unique,
 Departamento Varchar(50) not null unique,
-InCharge Varchar(100) not null
+Encargado Varchar(100) not null
 );
 
 Create table Position(
@@ -77,12 +77,6 @@ Id Int not null Constraint pk_nomina primary key Identity(1,1),
 Año Varchar(4) not null,
 Mes Varchar(20) not null,
 MontoTotal decimal(13,2) not null
-);
-
-Create table Tipo(
-
-Id Int not null Constraint pk_tipo primary key Identity(1,1),
-Porque Varchar(9)
 );
 
 Create table Departure(
